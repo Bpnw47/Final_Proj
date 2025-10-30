@@ -4,7 +4,6 @@ import Home from "./Home";
 import Profile from "./Profile";
 import Contact from "./Contact";
 import Register from "./Register";
-import About from "./About";
 
 export default function RoutingApp() {
   return (
@@ -13,8 +12,9 @@ export default function RoutingApp() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/about" element={<About />} />
-
     </Routes>
   );
-}
+};
+
+// 3) Export 
+export default RoutingApp;

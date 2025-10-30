@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("รายเดือน"); // ค่าเริ่มต้น
@@ -12,7 +13,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full bg-gray-50 text-gray-800 flex flex-col">
       {/* ส่วนหัว */}
-      <section className="bg-blue-100 w-screen min-h-[45vh] flex flex-col justify-center items-center text-center mt-[80px] pt-10 pb-16 overflow-hidden">
+      <section className="bg-blue-100 w-full py-20 flex flex-col items-center text-center pt-28">
         {/* กล่องทั้งหมด */}
         <div className="max-w-5xl w-full text-center">
           {/* หัวข้อ */}
@@ -121,9 +122,12 @@ export default function Home() {
                 <p className="text-blue-600 font-semibold mt-2 text-lg">
                   {dorm.price}
                 </p>
-                <button className="mt-4 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 w-full">
+                <Link
+                  to={`/dorm/${idx}`}
+                  className="mt-4 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 w-full text-center block"
+                >
                   ดูรายละเอียด
-                </button>
+                </Link>
               </div>
             </div>
           ))}
