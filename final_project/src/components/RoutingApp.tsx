@@ -10,6 +10,7 @@ import ApartmentList from './ApartmentList';
 const RoutingApp: React.FC = () => {
   // 2.2 JSX with routing structure 
   return (
+<<<<<<< HEAD
     <BrowserRouter>
       {/* 2.2.1) BrowserRouter */}
       <div className="min-h-screen bg-gray-100">
@@ -38,8 +39,10 @@ const RoutingApp: React.FC = () => {
         </div>
       </div>
     </BrowserRouter>
+=======
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+>>>>>>> c552c91fdd76b1921f439c77dd317ed4a8af163d
   );
-};
-
-// 3) Export 
-export default RoutingApp;
+}
