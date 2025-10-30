@@ -136,7 +136,7 @@ export default function Home() {
 
       {/* ส่วนท้าย */}
       <footer className="bg-blue-600 text-white py-5 text-center mt-auto w-full">
-        © 2025 Dorm Finder | จัดทำโดยทีม Final Project
+        © 2025 Dorm Finder | จัดทำโดยทีม Dorm Finder 🤍
       </footer>
     </div>
   );
