@@ -21,7 +21,7 @@ const initialState: ApartmentState = {
     error: null,
 }; 
 // Base URL สำหรับ API
-const API_URL = 'http://localhost:3000/Apartment'; 
+const API_URL = 'http://localhost:3000/apartments'; 
 // Async Thunks สำหรับ API calls (ใช้ Axios GET POST PUT DELETE)
 export const fetchApartments = createAsyncThunk('apartments/fetchApartments', async () => {
     const response = await axios.get<Apartment[]>(API_URL);
