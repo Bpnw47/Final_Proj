@@ -1,57 +1,95 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-interface Props {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export default function LoginModal({ isOpen, onClose }: Props) {
-  const [email, setEmail] = useState("");
-  const [pw, setPw] = useState("");
-
-  if (!isOpen) return null;
-
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`ลองล็อกอินด้วย:\nEmail: ${email}\nPassword: ${pw}`);
-    onClose();
-  };
+export default function LoginModal({ onClose }: { onClose: () => void }) {
+  const [activeTab, setActiveTab] = useState("login");
 
   return (
-    <div
-      className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
-      onClick={onClose}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="bg-white p-6 rounded-lg w-96 relative"
-      >
+    // 🔹 เปลี่ยนพื้นหลังให้โปร่งใสแทนที่จะมืด
+    <div className="fixed inset-0 flex items-center justify-center bg-white/50 backdrop-blur-sm z-50">
+      <div className="bg-white rounded-2xl shadow-lg w-[90%] max-w-md p-6 relative">
+        {/* ปุ่มปิด */}
         <button
           onClick={onClose}
-          className="absolute right-3 top-2 text-gray-500 hover:text-red-600"
+          className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-xl"
         >
-          ✖
+          ✕
         </button>
-        <h2 className="text-xl font-semibold mb-4 text-center">เข้าสู่ระบบ</h2>
-        <form onSubmit={handleLogin} className="space-y-3">
-          <input
-            type="email"
-            placeholder="อีเมล"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="border w-full p-2 rounded"
-          />
-          <input
-            type="password"
-            placeholder="รหัสผ่าน"
-            value={pw}
-            onChange={(e) => setPw(e.target.value)}
-            className="border w-full p-2 rounded"
-          />
-          <button className="bg-blue-600 text-white py-2 w-full rounded hover:bg-blue-700">
+
+        {/* หัวข้อ */}
+        <h2 className="text-center text-lg font-semibold text-gray-700 mb-5">
+          ยินดีต้อนรับสู่{" "}
+          <span className="text-blue-600 font-bold">Dorm Finder</span>
+        </h2>
+
+        {/* แท็บ */}
+        <div className="flex border-b mb-5">
+          <button
+            onClick={() => setActiveTab("login")}
+            className={`flex-1 py-2 text-center font-medium border-b-2 ${
+              activeTab === "login"
+                ? "border-blue-500 text-blue-600"
+                : "border-transparent text-gray-500 hover:text-blue-500"
+            }`}
+          >
             เข้าสู่ระบบ
           </button>
-        </form>
+          <button
+            onClick={() => setActiveTab("register")}
+            className={`flex-1 py-2 text-center font-medium border-b-2 ${
+              activeTab === "register"
+                ? "border-blue-500 text-blue-600"
+                : "border-transparent text-gray-500 hover:text-blue-500"
+            }`}
+          >
+            สมัครสมาชิก
+          </button>
+        </div>
+
+        {/* เนื้อหา */}
+        {activeTab === "login" ? (
+          <div className="flex flex-col gap-3">
+            <input
+              type="email"
+              placeholder="อีเมล"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-blue-500"
+            />
+            <input
+              type="password"
+              placeholder="รหัสผ่าน"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-blue-500"
+            />
+            <a
+              href="#"
+              className="text-sm text-blue-600 hover:underline text-right"
+            >
+              ลืมรหัสผ่าน?
+            </a>
+            <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg mt-2 font-semibold">
+              เข้าสู่ระบบ
+            </button>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-3">
+            <input
+              type="text"
+              placeholder="ชื่อผู้ใช้"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-blue-500"
+            />
+            <input
+              type="email"
+              placeholder="อีเมล"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-blue-500"
+            />
+            <input
+              type="password"
+              placeholder="รหัสผ่าน"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-blue-500"
+            />
+            <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg mt-2 font-semibold">
+              สมัครสมาชิก
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

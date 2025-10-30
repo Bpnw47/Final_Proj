@@ -1,40 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import LoginModal from "./LoginModal";
 
 export default function Navbar() {
-  return (
-    <nav className="bg-blue-600 text-white py-3 shadow-md fixed top-0 left-0 w-full z-50">
-      <div className="container mx-auto flex justify-between items-center px-6">
-        {/* โลโก้ หรือชื่อเว็บ */}
-        <h1 className="text-xl font-bold tracking-wide">🏠 Dorm Finder</h1>
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
-        {/* เมนูนำทาง */}
-        <ul className="flex space-x-6 text-sm font-medium">
-          <li>
-            <Link to="/" className="hover:text-blue-200 transition">
-              หน้าหลัก
-            </Link>
-          </li>
-          <li>
-            <Link to="/about" className="hover:text-blue-200 transition">
-              เกี่ยวกับ
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact" className="hover:text-blue-200 transition">
-              ติดต่อ
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/register"
-              className="bg-white text-blue-600 px-3 py-1 rounded-md hover:bg-blue-100 transition"
-            >
-              สมัครสมาชิก
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </nav>
+  return (
+    <>
+      <nav className="bg-blue-600 text-white px-8 py-3 flex justify-between items-center shadow-md">
+        {/* โลโก้ */}
+        <div className="flex items-center gap-2">
+          <span className="text-2xl">🏡</span>
+          <span className="text-lg font-semibold">Dorm Finder</span>
+        </div>
+
+        {/* เมนู */}
+        <div className="flex items-center gap-6">
+          <a href="#" className="hover:underline">
+            หน้าหลัก
+          </a>
+          <a href="#" className="hover:underline">
+            เกี่ยวกับ
+          </a>
+          <a href="#" className="hover:underline">
+            ติดต่อ
+          </a>
+
+          {/* ปุ่มเข้าสู่ระบบ */}
+          <button
+            onClick={() => setIsLoginOpen(true)}
+            className="bg-white text-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-100 transition"
+          >
+            เข้าสู่ระบบ
+          </button>
+        </div>
+      </nav>
+
+      {/* Modal */}
+      {isLoginOpen && <LoginModal onClose={() => setIsLoginOpen(false)} />}
+    </>
   );
 }
