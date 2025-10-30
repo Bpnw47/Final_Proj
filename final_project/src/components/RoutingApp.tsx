@@ -16,7 +16,4 @@ export default function RoutingApp() {
       <Route path="/register" element={<Register />} />
     </Routes>
   );
-};
-
-// 3) Export 
-export default RoutingApp;
+}
