@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full bg-gray-50 text-gray-800 flex flex-col">
       {/* ส่วนหัว */}
-      <section className="bg-blue-100 w-full py-16 flex flex-col items-center">
+      <section className="bg-blue-100 w-screen min-h-[45vh] flex flex-col justify-center items-center text-center mt-[80px] pt-10 pb-16 overflow-hidden">
         {/* กล่องทั้งหมด */}
         <div className="max-w-5xl w-full text-center">
           {/* หัวข้อ */}
