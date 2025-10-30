@@ -7,7 +7,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-blue-600 text-white px-8 py-3 flex justify-between items-center shadow-md fixed top-0 left-0 w-full z-50">
+      <nav className="fixed top-0 left-0 w-full bg-blue-600 text-white px-8 py-3 flex justify-between items-center shadow-md z-50">
         {/* โลโก้ */}
         <div className="flex items-center gap-2">
           <span className="text-2xl">🏡</span>
