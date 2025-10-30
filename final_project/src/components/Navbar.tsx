@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import LoginModal from "./LoginModal";
 
 export default function Navbar() {
@@ -6,7 +7,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-blue-600 text-white px-8 py-3 flex justify-between items-center shadow-md">
+      <nav className="bg-blue-600 text-white px-8 py-3 flex justify-between items-center shadow-md fixed top-0 left-0 w-full z-50">
         {/* โลโก้ */}
         <div className="flex items-center gap-2">
           <span className="text-2xl">🏡</span>
@@ -15,15 +16,23 @@ export default function Navbar() {
 
         {/* เมนู */}
         <div className="flex items-center gap-6">
-          <a href="#" className="hover:underline">
+          <Link to="/" className="hover:underline">
             หน้าหลัก
-          </a>
-          <a href="#" className="hover:underline">
+          </Link>
+          <Link to="/about" className="hover:underline">
             เกี่ยวกับ
-          </a>
-          <a href="#" className="hover:underline">
+          </Link>
+          <Link to="/contact" className="hover:underline">
             ติดต่อ
-          </a>
+          </Link>
+
+          {/* ปุ่มลงประกาศ */}
+          <Link
+            to="/post"
+            className="bg-yellow-400 text-blue-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition shadow-sm"
+          >
+            ลงประกาศ
+          </Link>
 
           {/* ปุ่มเข้าสู่ระบบ */}
           <button
@@ -35,7 +44,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Modal */}
+      {/* Modal Login */}
       {isLoginOpen && <LoginModal onClose={() => setIsLoginOpen(false)} />}
     </>
   );
