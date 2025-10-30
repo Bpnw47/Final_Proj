@@ -1,39 +1,20 @@
-// 1) Import
-import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Home from './Home';
-import ApartmentList from './ApartmentList';
-import ApartmentForm from './ApartmentForm';
+// src/components/RoutingApp.tsx
+import { Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import About from "./About";
+import Profile from "./Profile";
+import Contact from "./Contact";
+import Register from "./Register";
 
-// Level 1 : RoutingApp (npm install react-router-dom @types/react - router - dom) 
-// 2) Create RoutingApp component
-const RoutingApp: React.FC = () => {
-  // 2.2 JSX with routing structure 
+export default function RoutingApp() {
   return (
-    <BrowserRouter>
-      {/* 2.2.1) BrowserRouter */}
-      <div className="min-h-screen bg-gray-100">
-        {/* Nav Bar and Links */}
-        <nav className="bg-blue-500 p-4">
-          <ul className="flex space-x-4">
-            {/* 2.3.4) Link */}
-            <li><Link to="/" className="text-white hover:underline">Home</Link></li>
-            <li><Link to="/apartments" className="text-white hover:underline">Apartments</Link></li>
-            <li><Link to="/apartments/new" className="text-white hover:underline">Add Apartment</Link></li>
-          </ul>
-        </nav>
-        {/* Routes and Route Handling */}
-        <div className="max-w-4xl mx-auto">
-          {/* 2.2.2) Routes */}
-          <Routes>
-            {/* 2.2.3) Route and path */}
-            <Route path="/" element={<Home />} />
-            <Route path="/apartments" element={<ApartmentList />} />
-            <Route path="/apartments/new" element={<ApartmentForm />} />
-          </Routes>
-        </div>
-      </div>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
   );
 };
 

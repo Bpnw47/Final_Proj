@@ -18,7 +18,7 @@ export default function Home() {
         <div className="max-w-5xl w-full text-center">
           {/* หัวข้อ */}
           <h1 className="text-4xl font-bold text-blue-700 mb-3">
-            🏠 ระบบค้นหาหอพักใกล้คุณ
+            🏠 Dorm Finder ค้นหาหอพักใกล้คุณ
           </h1>
           <p className="text-gray-700 mb-8 text-lg">
             ค้นหาหอพักหรืออพาร์ตเมนต์ทั่วประเทศได้ง่าย ๆ
