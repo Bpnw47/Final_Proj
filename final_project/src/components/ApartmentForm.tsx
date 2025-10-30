@@ -42,17 +42,16 @@ const ApartmentForm: React.FC<ApartmentFormProps> = ({ editingApartment, onCance
                 {editingApartment ? 'Edit Apartment' : 'Add New Apartment'}
             </h2>
             <form onSubmit={handleSubmit} className="space-y-4">
-                {/* ช่องกรอกชื่อหนังสือ */}
+                {/* ช่องกรอกชื่อ Apartment */}
                 <div>
-                    <label className="block text-gray-700">Title:</label>
+                    <label className="block text-gray-700">Name:</label>
                     <input
                         type="text" value={name} onChange={(e) => setName(e.target.value)}
                         className="w-full p-2 border border-gray-300 rounded-md focus:outline-none 
 focus:ring-2 focus:ring-blue-500"
                         required />
                 </div>
-
-                {/* ช่องกรอ ISBN */}
+                {/* ช่องกรอกรายละเอียด Detail */}
                 <div>
                     <label className="block text-gray-700">Detail:</label>
                     <input type="text" value={detail} onChange={(e) => setDetail(e.target.value)}
