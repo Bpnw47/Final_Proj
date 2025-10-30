@@ -5,6 +5,7 @@ import Profile from "./Profile";
 import Contact from "./Contact";
 import Register from "./Register";
 import Post from "./Post";
+import DormDetail from "./DormDetail";
 
 export default function RoutingApp() {
   return (
@@ -14,6 +15,7 @@ export default function RoutingApp() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/register" element={<Register />} />
       <Route path="/post" element={<Post />} />
+      <Route path="/dorm/:id" element={<DormDetail />} />
     </Routes>
   );
 }
