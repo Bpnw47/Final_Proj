@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-50 text-gray-800">
+      <div className="w-screen min-h-screen overflow-x-hidden bg-gray-50">
         <Navbar />
         <RoutingApp />
       </div>
