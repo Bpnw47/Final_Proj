@@ -1,17 +1,13 @@
-import "./App.css";
-import Navbar from "./components/Navbar";
-import RoutingApp from "./components/RoutingApp";
-import { BrowserRouter } from "react-router-dom";
-
-function App() {
+import React from 'react';
+import ApartmentForm from './components/ApartmentForm'; 
+import ApartmentList from './components/ApartmentList'; 
+import RoutingApp from './components/RoutingApp';
+const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <div className="w-screen min-h-screen overflow-x-hidden bg-gray-50">
-        <Navbar />
-        <RoutingApp />
-      </div>
-    </BrowserRouter>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4 space-y-8">
+      <h1 className="text-3xl font-bold text-gray-800">Apartment Management App</h1>
+      <RoutingApp /> {/* สำหรับ routing */}
+    </div>
   );
-}
-
+};
 export default App;
