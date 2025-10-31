@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // 1) Import
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
@@ -68,26 +67,4 @@ const RoutingApp: React.FC = () => {
     </BrowserRouter>
   );
 };
-=======
-// src/components/RoutingApp.tsx
-import { Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import Profile from "./Profile";
-import Contact from "./Contact";
-import Register from "./Register";
-import Post from "./Post";
-import DormDetail from "./DormDetail";
->>>>>>> 66e6b61a38b5d5c850ab2ad09339d0c105345093
-
-export default function RoutingApp() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/post" element={<Post />} />
-      <Route path="/dorm/:id" element={<DormDetail />} />
-    </Routes>
-  );
-}
+export default RoutingApp;
