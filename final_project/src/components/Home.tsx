@@ -13,12 +13,12 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full bg-gray-50 text-gray-800 flex flex-col">
       {/* ส่วนหัว */}
-      <section className="bg-blue-100 w-full py-20 flex flex-col items-center text-center pt-28">
+      <section className="bg-blue-100 w-screen min-h-[45vh] flex flex-col justify-center items-center text-center mt-[80px] pt-10 pb-16 overflow-hidden">
         {/* กล่องทั้งหมด */}
         <div className="max-w-5xl w-full text-center">
           {/* หัวข้อ */}
           <h1 className="text-4xl font-bold text-blue-700 mb-3">
-            🏠 ระบบค้นหาหอพักใกล้คุณ
+            🏠 Dorm Finder ค้นหาหอพักใกล้คุณ
           </h1>
           <p className="text-gray-700 mb-8 text-lg">
             ค้นหาหอพักหรืออพาร์ตเมนต์ทั่วประเทศได้ง่าย ๆ
@@ -136,7 +136,7 @@ export default function Home() {
 
       {/* ส่วนท้าย */}
       <footer className="bg-blue-600 text-white py-5 text-center mt-auto w-full">
-        © 2025 Dorm Finder | จัดทำโดยทีม Final Project
+        © 2025 Dorm Finder | จัดทำโดยทีม Dorm Finder 🤍
       </footer>
     </div>
   );

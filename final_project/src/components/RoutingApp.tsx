@@ -1,45 +1,21 @@
-// 1) Import
-import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Home from './Home';
-import About from './About';
-import ApartmentForm from './ApartmentForm';
-import ApartmentList from './ApartmentList';
-// Level 1 : RoutingApp (npm install react-router-dom @types/react - router - dom) 
-// 2) Create RoutingApp component
-const RoutingApp: React.FC = () => {
-  // 2.2 JSX with routing structure 
-  return (
-    <BrowserRouter>
-      {/* 2.2.1) BrowserRouter */}
-      <div className="min-h-screen bg-gray-100">
-        {/* Nav Bar and Links */}
-        <nav className="bg-blue-500 p-4">
-          <ul className="flex space-x-4">
-            {/* 2.3.4) Link */}
-            <li><Link to="/" className="text-white hover:underline">Home</Link></li>
-            <li><Link to="/about" className="text-white hover:underline">About</Link></li>
-            <li><Link to="/apartments/list" className="text-white hover:underline">List/Edit/Delete
-              Apartment</Link></li>
-            <li><Link to="/apartments/new" className="text-white hover:underline">Add New
-              Apartment</Link></li>
-          </ul>
-        </nav>
-        {/* Routes and Route Handling */}
-        <div className="max-w-4xl mx-auto">
-          {/* 2.2.2) Routes */}
-          <Routes>
-            {/* 2.2.3) Route and path */}
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/apartments/list" element={<ApartmentList />} />
-            <Route path="/apartments/new" element={<ApartmentForm />} />
-          </Routes>
-        </div>
-      </div>
-    </BrowserRouter>
-  );
-};
+// src/components/RoutingApp.tsx
+import { Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import Profile from "./Profile";
+import Contact from "./Contact";
+import Register from "./Register";
+import Post from "./Post";
+import DormDetail from "./DormDetail";
 
-// 3) Export 
-export default RoutingApp;
+export default function RoutingApp() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/post" element={<Post />} />
+      <Route path="/dorm/:id" element={<DormDetail />} />
+    </Routes>
+  );
+}
