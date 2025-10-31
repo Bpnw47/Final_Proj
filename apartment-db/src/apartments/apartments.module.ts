@@ -1,11 +1,17 @@
+// src/apartments/apartments.module.ts
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
 import { ApartmentsController } from './apartments.controller';
 import { ApartmentsService } from './apartments.service';
-import { Apartment } from './apartment.entity';
+import { Apartment, ApartmentSchema } from './entities/apartment.entity';
+
 @Module({
-  imports: [TypeOrmModule.forFeature([Apartment])], // Register the Apartment entity
+  imports: [
+    MongooseModule.forFeature([
+      { name: Apartment.name, schema: ApartmentSchema },
+    ]),
+  ],
   controllers: [ApartmentsController],
   providers: [ApartmentsService],
 })
-export class ApartmentsModule { }
+export class ApartmentsModule {}
