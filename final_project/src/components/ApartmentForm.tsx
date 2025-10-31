@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { type AppDispatch } from '../store';
 import { addApartment, updateApartment, type Apartment } from '../store/apartmentSlice';
@@ -13,14 +13,29 @@ const ApartmentForm: React.FC<ApartmentFormProps> = ({ editingApartment, onCance
     const [name, setName] = useState(editingApartment?.name || '');
     const [detail, setDetail] = useState(editingApartment?.detail || '');
     const [price, setPrice] = useState(editingApartment?.price || 0);
+    // Keep local state in sync if editingApartment prop changes
+    useEffect(() => {
+        if (editingApartment) {
+            setName(editingApartment.name ?? '');
+            setDetail(editingApartment.detail ?? '');
+            setPrice(editingApartment.price ?? 0);
+        }
+    }, [editingApartment]);
     // ฟังก์ชันรองรับปุ่ม SUBMIT
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             if (editingApartment) {
-                // Dispatch update and wait for it to complete 
-                await dispatch(updateApartment({ id: editingApartment.id, name, detail, price })).unwrap();
-                if (onCancelEdit) onCancelEdit(); // Cancel edit mode on success 
+                // Ensure we have a valid id before attempting update
+                const id = editingApartment.id;
+                if (id === undefined || id === null) {
+                    console.error('Cannot update apartment: missing id on editingApartment');
+                    return;
+                }
+
+                // Dispatch update and wait for it to complete
+                await dispatch(updateApartment({ id, name, detail, price })).unwrap();
+                if (onCancelEdit) onCancelEdit(); // Cancel edit mode on success
             } else {
                 // Dispatch add and wait for it to complete 
                 await dispatch(addApartment({ name, detail, price })).unwrap();
