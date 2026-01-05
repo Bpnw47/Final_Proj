@@ -1,35 +1,49 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import LoginModal from "./components/LoginModal";
-import Post from "./components/Post";
-import DormDetail from "./components/DormDetail";
+import React, { Component, type ErrorInfo, type ReactNode } from 'react';
+import Navbar from './components/Navbar';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        {/* เข้าครั้งแรกให้ไปหน้า Login */}
-        <Route path="/" element={<Navigate to="/login" />} />
+// Error Boundary Component
+class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
 
-        {/* หน้า Login */}
-        <Route path="/login" element={<LoginModal onClose={() => {}} />} />
+  static getDerivedStateFromError(_: Error) {
+    return { hasError: true };
+  }
 
-        {/* หน้า Home */}
-        <Route path="/home" element={<Home />} />
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+  }
 
-        {/* หน้าอื่น ๆ */}
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/post" element={<Post />} />
-        <Route path="/dorm/:id" element={<DormDetail />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="p-4 text-center">
+          <h2 className="text-xl font-bold text-red-600 mb-2">Something went wrong</h2>
+          <button
+            onClick={() => this.setState({ hasError: false })}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Try again
+          </button>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
 }
 
+const App: React.FC = () => {
+  return (
+    <ErrorBoundary>
+      <div className="min-h-screen bg-gray-100">
+        <Navbar />
+      </div>
+    </ErrorBoundary>
+  );
+};
+
 export default App;
+
